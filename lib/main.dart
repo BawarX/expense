@@ -19,7 +19,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Flutter App"),
+        title: Text("Flutter App demo for github"),
       ),
       body: Center(
         child: Text('widget playground'),
