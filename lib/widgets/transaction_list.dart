@@ -18,7 +18,7 @@ TransactionList(this.transactions);
                         margin:
                             EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                         decoration: BoxDecoration(
-                          border: Border.all(color: Colors.purple, width: 2),
+                          border: Border.all(color: Theme.of(context).primaryColorLight, width: 2),
                         ),
                         padding: EdgeInsets.all(10),
                         child: Text(
@@ -26,7 +26,7 @@ TransactionList(this.transactions);
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
-                            color: Colors.purple,
+                            color: Theme.of(context).primaryColor,
                           ),
                         ),
                       ),
@@ -35,10 +35,10 @@ TransactionList(this.transactions);
                         children: [
                           Text(
                             tx.title,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                            ),
+                          
+                              style: Theme.of(context).textTheme.headline6,
+                              
+                            
                           ),
                           Text(
                             DateFormat.yMd().format(tx.date),
