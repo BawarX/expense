@@ -1,6 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:expense/models/transaction.dart';
+import 'package:expense/widgets/card.dart';
 import 'package:expense/widgets/new_transaction.dart';
 import 'package:expense/widgets/transaction_list.dart';
 
@@ -48,19 +49,28 @@ class _MyHomePageState extends State<MyHomePage> {
   // String? titleInput;
 
   final List<Transaction> _userTransactions = [
-    Transaction(
-      id: 't1',
-      title: 'new shoes',
-      amount: 20.1,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't5',
-      title: 'shirt',
-      amount: 59.01,
-      date: DateTime.now(),
-    ),
+    // Transaction(
+    //   id: 't1',
+    //   title: 'new shoes',
+    //   amount: 20.1,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: 't5',
+    //   title: 'shirt',
+    //   amount: 59.01,
+    //   date: DateTime.now(),
+    // ),
   ];
+
+    List<Transaction> get _recentTransactions {
+      return _userTransactions.where((tx) {
+        return tx.date.isAfter(
+          DateTime.now().subtract(
+            Duration(days: 7),),
+            );
+      }).toList();
+    }
 
   void _addNewTransaction(String txTitle, double txAmount) {
     final newTx = Transaction(
@@ -95,18 +105,12 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
       body: SingleChildScrollView(
+        
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Card(
-              color: Theme.of(context).primaryColorLight,
-              child: Container(
-
-                  height: 20, width: 350, child: Text("Market System Beta",)
-                  
-                  ),
-            ),
+           Chart(_recentTransactions),
             TransactionList(_userTransactions),
           ],
         ),

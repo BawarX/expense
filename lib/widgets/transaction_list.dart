@@ -10,6 +10,8 @@ TransactionList(this.transactions);
   @override
   Widget build(BuildContext context) {
     return  Column(
+
+             
               children: transactions.map((tx) {
                 return Card(
                   child: Row(
@@ -52,6 +54,7 @@ TransactionList(this.transactions);
                   ),
                 );
               }).toList(),
+           
             );
   }
 }
